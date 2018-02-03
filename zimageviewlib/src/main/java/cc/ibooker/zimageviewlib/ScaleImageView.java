@@ -363,6 +363,7 @@ public class ScaleImageView extends AppCompatImageView implements OnGlobalLayout
         y /= pointerCount;
 
         if (mLastPointerCount != pointerCount) {
+            isCanDrag = false;
             mLastX = x;
             mLastY = y;
         }
