@@ -12,7 +12,7 @@ allprojects {
 }
 
 dependencies {
-	compile 'com.github.zrunker:ZImageView:v1.0'
+	compile 'com.github.zrunker:ZImageView:v1.0.1'
 }
 ```
 2、在maven文件中添加以下代码：
@@ -27,7 +27,7 @@ dependencies {
 <dependency>
 	<groupId>com.github.zrunker</groupId>
 	<artifactId>ZImageView</artifactId>
-	<version>v1.0</version>
+	<version>v1.0.1</version>
 </dependency>
 ```
 
