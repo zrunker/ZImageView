@@ -45,7 +45,6 @@ public class ScaleImageView extends AppCompatImageView implements OnGlobalLayout
     private int mLastPointerCount;
     private float mLastX;
     private float mLastY;
-    private float mTouchSlop; // 判断是否移动的比较值
     private boolean isCanDrag; // 判断是否移动
     private boolean isCheckLeftAndRight;
     private boolean isCheckTopAndBottom;
@@ -63,7 +62,6 @@ public class ScaleImageView extends AppCompatImageView implements OnGlobalLayout
         setScaleType(ScaleType.MATRIX);
         mScaleGestureDetector = new ScaleGestureDetector(context, this);
         setOnTouchListener(this);
-        mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
         mGestureDetector = new GestureDetector(context,
                 new GestureDetector.SimpleOnGestureListener() {
                     @Override
@@ -350,10 +348,10 @@ public class ScaleImageView extends AppCompatImageView implements OnGlobalLayout
         /**
          * 实现图片移动
          */
-        // 获取中心点未知
+        // 获取中心点位置
         float x = 0;
         float y = 0;
-
+        // 多触点数量
         int pointerCount = event.getPointerCount();
         for (int i = 0; i < pointerCount; i++) {
             x += event.getX(i);
@@ -363,7 +361,8 @@ public class ScaleImageView extends AppCompatImageView implements OnGlobalLayout
         y /= pointerCount;
 
         if (mLastPointerCount != pointerCount) {
-            isCanDrag = false;
+            // 只有一个触点时才能移动
+            isCanDrag = pointerCount == 1;
             mLastX = x;
             mLastY = y;
         }
@@ -382,15 +381,13 @@ public class ScaleImageView extends AppCompatImageView implements OnGlobalLayout
                     if (getParent() instanceof ViewPager)
                         getParent().requestDisallowInterceptTouchEvent(true); // 取消父控件拦截
                 }
-                float dx = x - mLastX;
-                float dy = y - mLastY;
-
-                if (!isCanDrag) {
-                    isCanDrag = isMoveAction(dx, dy);
-                }
                 if (isCanDrag) {
                     // 如果宽度小于控件宽度，不允许横向移动，如果高度小于控件高度，不允许竖向移动
                     if (getDrawable() != null) {
+                        // 记录移动距离
+                        float dx = x - mLastX;
+                        float dy = y - mLastY;
+
                         isCheckLeftAndRight = isCheckTopAndBottom = true;
                         if (rectF.width() < getWidth()) {
                             dx = 0;
@@ -442,17 +439,6 @@ public class ScaleImageView extends AppCompatImageView implements OnGlobalLayout
         }
 
         mScaleMatrix.postTranslate(deltaX, deltaY);
-    }
-
-    /**
-     * 判断是否移动
-     *
-     * @param dx x轴移动距离
-     * @param dy y轴移动距离
-     * @return 是否可以移动
-     */
-    private boolean isMoveAction(float dx, float dy) {
-        return Math.sqrt(dx * dx + dy * dy) > mTouchSlop;
     }
 
     /**
