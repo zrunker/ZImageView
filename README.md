@@ -1,5 +1,5 @@
 # ZImageView
-ImageView缩放图，双击放大，在点击缩小，同时支持手势放大与缩小。支持点击事件和长按事件监听。同时提供圆角图片管理类，可以设置ImageView圆角显示。
+ImageView缩放图，双击放大，再次点击缩小，支持手势放大与缩小，自由移动。支持点击事件和长按事件监听，支持ViewPager一起使用事件分发。同时提供圆角图片管理类，可以设置ImageView圆角显示，支持视图裁剪等功能。
 
 引入资源：
 
@@ -57,7 +57,7 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 }
 ```
 
-### 二、ScaleImageView缩放图
+### 三、ScaleImageView缩放图
 
 引入布局文件：
 ```
