@@ -19,12 +19,18 @@ public class MainActivity extends AppCompatActivity {
         // 圆角图
         ImageView imageView = findViewById(R.id.image);
         CircleImgViewUtil circleImgViewUtil = new CircleImgViewUtil(this);
-
         circleImgViewUtil.setImageResource(imageView, R.drawable.ibooker_144);
 //        circleImgViewUtil.setImageBitmap(imageView, Bitmap);
 //        circleImgViewUtil.setImageDrawable(imageView, Drawable);
 //        circleImgViewUtil.setImageIcon(imageView, Icon);
 //        circleImgViewUtil.setImageURI(imageView, Uri);
+
+        // View圆形裁剪
+//        imageView.setImageResource(R.drawable.ibooker_144);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            ViewOutlineProviderUtil viewOutlineProviderUtil = new ViewOutlineProviderUtil();
+//            viewOutlineProviderUtil.setOval(imageView, 0, 0, 0, 0);
+//        }
 
         // 缩放图
         ScaleImageView scaleImageView = findViewById(R.id.scaleImageView);
