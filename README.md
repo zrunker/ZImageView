@@ -12,7 +12,7 @@ allprojects {
 }
 
 dependencies {
-	compile 'com.github.zrunker:ZImageView:v1.0.1'
+	compile 'com.github.zrunker:ZImageView:v1.0'
 }
 ```
 2、在maven文件中添加以下代码：
@@ -27,7 +27,7 @@ dependencies {
 <dependency>
 	<groupId>com.github.zrunker</groupId>
 	<artifactId>ZImageView</artifactId>
-	<version>v1.0.1</version>
+	<version>v1.0</version>
 </dependency>
 ```
 
@@ -45,6 +45,17 @@ circleImgViewUtil.setImageResource(imageView, R.drawable.ibooker_144);
 //        circleImgViewUtil.setImageURI(imageView, Uri);
 ```
 通过CircleImgViewUtil给ImageView变量赋值，就能实现圆形图。
+
+### 二、View视图裁剪
+
+```
+// View圆形裁剪
+ImageView imageView.setImageResource(R.drawable.ibooker_144);
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        ViewOutlineProviderUtil viewOutlineProviderUtil = new ViewOutlineProviderUtil();
+        viewOutlineProviderUtil.setOval(imageView, 0, 0, 0, 0);
+}
+```
 
 ### 二、ScaleImageView缩放图
 
