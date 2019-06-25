@@ -23,6 +23,7 @@ import java.io.IOException;
  * 圆角图片
  *
  * @Author 邹峰立
+ * https://github.com/zrunker/ZImageView
  */
 public class CircleImgViewUtil {
     private Context context;

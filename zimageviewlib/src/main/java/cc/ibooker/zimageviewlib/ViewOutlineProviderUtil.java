@@ -11,6 +11,7 @@ import android.view.ViewOutlineProvider;
  * Android5.0特性 轮廓提供者
  * <p>
  * Created by 邹峰立 on 2018/2/4 0004.
+ * https://github.com/zrunker/ZImageView
  */
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class ViewOutlineProviderUtil {

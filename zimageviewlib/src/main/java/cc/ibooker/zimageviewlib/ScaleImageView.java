@@ -20,6 +20,7 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
  * 自定义可以缩放的ImageView
  *
  * @author 邹峰立
+ * https://github.com/zrunker/ZImageView
  */
 public class ScaleImageView extends AppCompatImageView implements OnGlobalLayoutListener, OnScaleGestureListener, OnTouchListener {
     private boolean mOnce = false; // 是否为第一次加载
